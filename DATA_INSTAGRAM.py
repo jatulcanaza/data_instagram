@@ -4,8 +4,8 @@ import time #Manejar funciones relacionadas con el tiempo como pausas (time.slee
 import matplotlib.pyplot as plt #Módulo para la creación de gráficos.
 from instaloader.exceptions import ConnectionException, BadResponseException #Importa excepciones específicas de Instaloader que ayudan a manejar errores de Instagram, como problemas de conexión o respuestas erróneas del servidor.
 # Configuración
-print("*** Sistema de Scrapy en Instagram ***")
-nombre_usuario = input("Ingrese su nombre de usuario (Instagram): ")  # Nombre de usuario de instagraam
+print("Data de Instagram")
+nombre_usuario = input("Ingrese su nombre de usuario (Instagram): ")  # Nombre de usuario de instagram
 contrasena_usuario = input("Ingrese la contraseña de su instagram: ")  # Contraseña de instagram
 nombre_usuario_formateado = nombre_usuario.replace(" ", "_").lower()
 output_csv = f"{nombre_usuario_formateado}_seguidores.csv"  # Nombre del archivo CSV
@@ -58,7 +58,6 @@ for idx, person in enumerate(followers, start=1):
         data.append({"username": person.username, "followers": followers_count})
 
         # Guardar datos parciales en el CSV después de cada consulta
-        # Guardar datos parciales en el CSV después de cada consulta
         pd.DataFrame(data).to_csv("C:/Users/MyVICTUS/Desktop/seguidores.csv", index=False, sep=';')
 
 #Si hay errores, omite al seguidor y espera 2 segundos entre solicitudes para evitar ser bloqueado por Instagram.
@@ -90,3 +89,4 @@ if data:  # Solo generar el gráfico si hay datos
     plt.show()
 else:
     print("No se generó ningún gráfico porque no hay datos suficientes.")
+
